@@ -1,24 +1,44 @@
-.expense-container {
+.flexBox {
+  display: flex;
   margin-top: 5%;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.expense-container {
   display: flex;
   flex-direction: column;
 }
 
+.expensesList {
+  width: 45%;
+}
+
 input {
-  width: 20%;
-  padding: 0.5%;
+  width: 200%;
+  padding: 2%;
   margin-top: 5px;
 }
 
 .exp-desc {
-  width: 20%;
-  padding: 0.5%;
+  width: 200%;
+  padding: 2%;
   margin-top: 5px;
 }
 
 .submit {
-  width: 10%;
-  margin-left: 5%;
-  padding: 0.5%;
+  margin-left: 75%;
+  padding: 2%;
   margin-top: 5px;
+  width: 50%;
+}
+
+.expense-item {
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
 }

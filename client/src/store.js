@@ -2,25 +2,32 @@ import create from 'zustand';
 
 import {devtools, persist} from 'zustand/middleware'
 
+const initialState = {
+  budgetTotal: 10000,
+  expenses: 0,
+  expensesList: [],
+}
 const budgetStore = (set) => ({
-    budgetTotal: 10000,
+    ...initialState,
     changeBudgetTotal: (newBudget) => {
-      set((state) => ({
+      set(() => ({
         budgetTotal: newBudget
       }))
     },
-    expenses: 0,
     addExpense: (expense) => {
       set((state) => ({
-        expenses: state.expenses + expense
+        expenses: parseInt(state.expenses) + parseInt(expense)
       }))
     },
-    expensesList: [],
     addExpenseToList: (expenseItem) => {
       set((state) => ({
         expensesList: [...state.expensesList, expenseItem]
       }))
-    }
+    },
+    clear: () => {
+      set(() => (initialState));
+      sessionStorage.clear(); // or localStorage.clear();
+    },
 })
 
 const useBudgetStore = create(
