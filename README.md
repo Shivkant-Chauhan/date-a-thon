@@ -23,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository
 
-https://github.com/rajutkarsh07/cutie
+https://github.com/Shivkant-Chauhan/date-a-thon
 
 2. go to client server
 
