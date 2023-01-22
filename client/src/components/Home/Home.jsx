@@ -29,6 +29,9 @@ const Home = () => {
             Gallery
           </Link>
           <Link exact="true" to="/comingSoon" className="btn-page">
+            Calendar
+          </Link>
+          <Link exact="true" to="/comingSoon" className="btn-page">
             Text Memories!
           </Link>
           <Link exact="true" to="/comingSoon" className="btn-page">
