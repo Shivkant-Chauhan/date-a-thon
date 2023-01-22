@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import useBudgetStore from "../stores/budgetStore";
-import './budgetTracker.css';
-
+import { useNavigate } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
+import "./budgetTracker.css";
 
 const BudgetTracker = () => {
-
-  const changeBudgetTotalHandler = useBudgetStore((state) => state.changeBudgetTotal);
+  const changeBudgetTotalHandler = useBudgetStore(
+    (state) => state.changeBudgetTotal
+  );
   const prevTotalBudget = useBudgetStore((state) => state.budgetTotal);
   const moneySpent = useBudgetStore((state) => state.expenses);
-  let warning = '';
+  let warning = "";
 
   if (moneySpent >= prevTotalBudget) {
-    warning = 'You have reached your budget limit';
+    warning = "You have reached your budget limit";
     alert("You have reached your budget limit");
-  } else if (prevTotalBudget - moneySpent < 1000) {
-    warning = 'You are about to reach your budget limit';
+  } else if (prevTotalBudget - moneySpent < 1001) {
+    warning = "You are about to reach your budget limit";
     alert("You are about to reach your budget limit");
   }
 
@@ -29,10 +31,12 @@ const BudgetTracker = () => {
     changeBudgetTotalHandler(budget);
   }
 
-  const [expense, setExpense] = useState('');
-  const [expenseDesc, setExpenseDesc] = useState('');
+  const [expense, setExpense] = useState("");
+  const [expenseDesc, setExpenseDesc] = useState("");
   const addExpenseHandler = useBudgetStore((state) => state.addExpense);
-  const addExpenseListHandler = useBudgetStore((state) => state.addExpenseToList);
+  const addExpenseListHandler = useBudgetStore(
+    (state) => state.addExpenseToList
+  );
   const expensesList = useBudgetStore((state) => state.expensesList);
 
   function addExpense(e) {
@@ -44,10 +48,10 @@ const BudgetTracker = () => {
     addExpenseHandler(expense);
     addExpenseListHandler({
       expenseDesc,
-      expense
+      expense,
     });
-    setExpense('');
-    setExpenseDesc('');
+    setExpense("");
+    setExpenseDesc("");
   }
 
   const clear = useBudgetStore((state) => state.clear);
@@ -56,35 +60,69 @@ const BudgetTracker = () => {
     clear();
   }
 
+  const Navigate = useNavigate();
+  const back = (e) => {
+    e.preventDefault();
+    Navigate(-1);
+  };
+
   return (
-    <div>
-      <button onClick={budgetSubmit}>Enter your monthly budget</button>
-      <button onClick={resetHandler}>Reset/Clear</button>
-      <h2>Total Monthly Budget: {prevTotalBudget}</h2>
-      <h2>Money Spent: {moneySpent}</h2>
+    <div className="budget">
+      <div className="btn" onClick={back}>
+        <BiArrowBack />
+      </div>
 
-      <div className="warning">{warning}</div>
-      <div className="flexBox">
-        <form className="expense-container" onSubmit={addExpense}>
-          <textarea rows={5} type="text" className="exp-desc" placeholder="Expense Desc" onChange={(e) => setExpenseDesc(e.target.value)} value={expenseDesc} />
-          <input type="number" className="exp-amount" placeholder="Add expense amount" onChange={(e) => setExpense(e.target.value)} value={expense} />
-          <button type="submit" className="submit">Add Expense</button>
-        </form>
+      <div className="content">
+        <h2>Budget Tracker</h2>
+        <button onClick={budgetSubmit} className="btn-primary">
+          Enter your monthly budget
+        </button>
+        <button onClick={resetHandler} className="btn-primary">
+          Reset/Clear
+        </button>
+        <h3>Total Monthly Budget: {prevTotalBudget}</h3>
+        <h3>Money Spent: {moneySpent}</h3>
 
-        <div className="expensesList">
-          <h4>Expenses List</h4>
-          {expensesList.map((expense, index) => {
-            return (
-              <div className="expense-item" key={index}>
-                <p>{expense.expenseDesc}</p>
-                <p>{expense.expense}</p><hr />
-              </div>
-            )}
-          )}
+        <div className="warning">{warning}</div>
+        <div className="flexBox">
+          <form className="expense-container" onSubmit={addExpense}>
+            <textarea
+              rows={5}
+              type="text"
+              className="exp-desc"
+              placeholder="Expense Desc"
+              onChange={(e) => setExpenseDesc(e.target.value)}
+              value={expenseDesc}
+              cols="40"
+            />
+            <input
+              type="number"
+              className="exp-amount"
+              placeholder="Add expense amount"
+              onChange={(e) => setExpense(e.target.value)}
+              value={expense}
+            />
+            <button type="submit" className="submit">
+              Add Expense
+            </button>
+          </form>
+
+          <div className="expensesList">
+            <h4>Expenses List</h4>
+            {expensesList.map((expense, index) => {
+              return (
+                <div className="expense-item" key={index}>
+                  <p>{expense.expenseDesc}</p>
+                  <p>{expense.expense}</p>
+                  <hr />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default BudgetTracker;

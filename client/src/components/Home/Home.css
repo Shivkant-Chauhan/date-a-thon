@@ -1,0 +1,34 @@
+.home {
+  background-color: #3b0e00;
+  min-height: 100vh;
+}
+.home h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #ffa07a;
+  padding: 50px 0 0 100px;
+}
+.home h2 {
+  text-align: center;
+  font-size: 80px;
+  max-width: 700px;
+  color: #ffffff;
+}
+.home .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+}
+.home .hero .pages-link {
+  display: flex;
+  gap: 60px;
+}
+.home .hero .pages-link .btn-page {
+  font-size: 46px;
+  color: #a07474;
+  transition: all 1s ease;
+}
+.home .hero .pages-link .btn-page:hover {
+  color: white;
+}

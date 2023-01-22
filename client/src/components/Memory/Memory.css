@@ -1,0 +1,50 @@
+.memory {
+  background-color: #3b0e00;
+}
+.memory h1 {
+  padding-top: 30px;
+  margin: 0;
+  font-size: 60px;
+  text-align: center;
+  color: #ffffff;
+}
+.memory .gallery-photos {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  row-gap: 30px;
+}
+.memory .gallery-photos img {
+  width: 300px;
+}
+.memory .memory-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.memory .memory-container p {
+  font-size: 30px;
+  text-align: center;
+}
+.memorycard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.memorycard h3 {
+  font-size: 28px;
+  margin: 0;
+}
+.memorycard div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+.memorycard-p {
+  font-size: 16px;
+}
