@@ -22,6 +22,8 @@
 }
 .home .hero .pages-link {
   display: flex;
+  flex-wrap: wrap;
+  margin-left: 5%;
   gap: 60px;
 }
 .home .hero .pages-link .btn-page {

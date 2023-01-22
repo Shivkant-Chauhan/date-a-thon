@@ -6,6 +6,7 @@ import BucketList from "./components/BucketList";
 import BudgetTracker from "./components/BudgetTracker";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DirectMessaging from "./components/DirectMessaging";
+import ComingSoon from "./components/ComingSoon";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="budgettracker" element={<BudgetTracker />} />
           <Route path="bucketlist" element={<BucketList />} />
           <Route path="send_message" element={<DirectMessaging />} />
+          <Route path="comingSoon" element={<ComingSoon />} />
         </Routes>
       </BrowserRouter>
     </div>

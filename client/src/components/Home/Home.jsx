@@ -25,6 +25,18 @@ const Home = () => {
           <Link exact="true" to="/budgettracker" className="btn-page">
             Budget Tracker
           </Link>
+          <Link exact="true" to="/comingSoon" className="btn-page">
+            Gallery
+          </Link>
+          <Link exact="true" to="/comingSoon" className="btn-page">
+            Text Memories!
+          </Link>
+          <Link exact="true" to="/comingSoon" className="btn-page">
+            Order Gifts
+          </Link>
+          <Link exact="true" to="/comingSoon" className="btn-page">
+            Mutual Songs
+          </Link>
         </div>
       </div>
     </div>
